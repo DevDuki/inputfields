@@ -1,0 +1,91 @@
+/* Variables and Fonts */
+:root {
+  --font-Futura: 'Futura Book', 'Helvetica Neue';
+  --font-size-normal: 0.8125rem;
+  --font-size-medium: 0.875rem;
+  --font-weight-bold: bold;
+  --font-weight-normal: 400;
+}
+
+/* Reset styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Globals */
+body {
+  font-family: var(--font-Futura);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+}
+
+
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+}
+
+fieldset {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+
+  /*? Are the input fields really 389px wide? */
+  grid-template-columns: repeat(3, 389px);
+  width: calc(3 * 389px + 2 * 114px);
+
+  margin: 0 auto;
+  margin-top: 3rem;
+  border-color: transparent;
+
+  column-gap: 114px;
+}
+
+#input-name {
+  grid-column: 1;
+  grid-row: 1;
+}
+#input-surname {
+  grid-column: 2;
+  grid-row: 1;
+}
+#input-nationality {
+  grid-column: 1;
+  grid-row: 2;
+}
+#input-birthdate {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.input-container {
+  padding-top: 15px;
+}
+
+label {
+  font-weight: var(--font-weight-bold);
+}
+
+input {
+  outline: none;
+  border: none;
+
+  border-bottom: 1px solid black;
+  padding-bottom: 2px;
+  height: 2rem;
+
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-normal);
+
+  transition: all 0.4s;
+}
+
+input:focus {
+  border-bottom: 3px solid #169BD5;
+  padding-bottom: 0px;
+  margin-bottom: -2px;
+}
