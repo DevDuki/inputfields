@@ -1,10 +1,18 @@
 /* Variables and Fonts */
 :root {
+
+  /* Font specific rules */
   --font-Futura: 'Futura Book', 'Helvetica Neue';
   --font-size-normal: 0.8125rem;
   --font-size-medium: 0.875rem;
   --font-weight-bold: bold;
   --font-weight-normal: 400;
+
+  /* General variables */
+  --color-action: #169BD5;
+  --color-border: #000000;
+  --color-icon: #797979;
+  --color-hover-option: #EFEFEF;
 }
 
 /* Reset styles */
@@ -23,6 +31,22 @@ body {
 
 
 
+section.input-section {
+  max-width: calc(3 * 389px + 2 * 114px);
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+
+fieldset {
+  border-color: transparent;
+  border-width: 0;
+}
+
+legend {
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-bold);
+}
+
 .input-container {
   display: flex;
   flex-direction: column;
@@ -30,19 +54,16 @@ body {
   width: 100%;
 }
 
-fieldset {
+.input-grid-container {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
 
   /*? Are the input fields really 389px wide? */
   grid-template-columns: repeat(3, 389px);
-  width: calc(3 * 389px + 2 * 114px);
-
-  margin: 0 auto;
-  margin-top: 3rem;
-  border-color: transparent;
 
   column-gap: 114px;
+
+  padding: 0 30px;
 }
 
 #input-name {
@@ -61,20 +82,37 @@ fieldset {
   grid-column: 3;
   grid-row: 1;
 }
-
-.input-container {
-  padding-top: 15px;
+#input-residence-permits {
+  grid-column: 2;
+  grid-row: 2;
 }
 
+
+
+/* Container & Wrapper */
+.input-container {
+  position: relative;
+  margin-top: 50px;
+}
+
+
+
+/* Label */
 label {
+  margin-bottom: 5px;
+
   font-weight: var(--font-weight-bold);
 }
 
-input {
+
+
+/* Input General */
+input,
+.custom-select {
   outline: none;
   border: none;
 
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--color-border);
   padding-bottom: 2px;
   height: 2rem;
 
@@ -84,8 +122,170 @@ input {
   transition: all 0.4s;
 }
 
-input:focus {
-  border-bottom: 3px solid #169BD5;
+.custom-select {
+  position: relative;
+  cursor: pointer;
+}
+
+input:focus,
+.custom-select[data-is-expanded="true"] {
+  border-bottom: 3px solid var(--color-action);
   padding-bottom: 0px;
   margin-bottom: -2px;
 }
+
+.custom-select[data-is-expanded="true"] {
+  margin-bottom: 0;
+}
+
+
+
+/* Select custom styling */
+.option-list {
+  visibility: hidden;
+
+  width: 100%;
+  position: absolute;
+  top: calc(100% + 10px);
+
+  overflow: auto;
+
+  border: 1px solid var(--color-border);
+}
+
+
+/* Options */
+.option {
+  padding: 7.5px 15px;
+  font-size: var(--font-size-normal);
+}
+
+.option:nth-child(2) {
+  margin-top: 7.5px;
+}
+
+.option:last-child {
+  margin-bottom: 7.5px;
+}
+
+.option:hover {
+  background-color: var(--color-hover-option);
+}
+
+/* Select Value */
+.selected-value {
+  position: absolute;
+  bottom: 8px;
+
+  transition: bottom 0.4s;
+}
+
+.custom-select[data-is-expanded="true"] .selected-value {
+  bottom: 6px;
+}
+
+
+
+
+/* Input type date */
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  /* position: absolute;
+  left: 20px;
+  bottom: 8px; */
+
+  padding-left: 20px;
+
+  font-family: var(--font-Futura);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: -28px;
+
+  cursor: pointer;
+}
+
+
+
+/* Icons & Notification */
+.icon-done,
+.icon-arrow-forward {
+  visibility: hidden;
+}
+
+/* Icon Done */
+.icon-done,
+.icon-expand-more {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  margin-bottom: 8px;
+
+  font-size: 1.25rem;
+}
+
+input:not(:focus):valid ~ .icon-done {
+  visibility: visible;
+}
+
+/* Icon Arrow Forward */
+.icon-arrow-forward {
+  position: absolute;
+  top: 40%;
+  right: calc(100% + 5px);
+
+  color: var(--color-action);
+
+  font-size: 1.75rem;
+}
+
+.input-container .notification {
+  visibility: hidden;
+
+  position: absolute;
+  top: calc(100% + 5px);
+
+  color: var(--color-action);
+
+  font-size: var(--font-size-medium);
+}
+
+input.missing-input ~ .icon-arrow-forward,
+input.missing-input ~ .notification {
+  visibility: visible;
+}
+
+.custom-select[data-is-valid="false"] ~ .icon-arrow-forward,
+.custom-select[data-is-valid="false"] ~ .notification {
+  visibility: visible;
+}
+
+.custom-select[data-is-expanded="true"] ~ .notification { /* Without this the notification will overlap the expanded option list */
+  visibility: hidden;
+}
+
+
+/* Icon Expand More */
+.icon-expand-more {
+  margin-bottom: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.option-list.visible ~ .icon-expand-more {
+  transform: rotateX(180deg);
+}
+
+
+
+/* Utility Classes */
+.visible {
+  visibility: visible;
+}
+
+/* ::-webkit-datetime-edit-fields-wrapper
+::-webkit-datetime-edit-text
+::-webkit-datetime-edit-month-field
+::-webkit-datetime-edit-day-field
+::-webkit-datetime-edit-year-field
+::-webkit-inner-spin-button
+::-webkit-calendar-picker-indicator */

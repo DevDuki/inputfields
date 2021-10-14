@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="robots" content="index,follow">
   <meta name="description" content="Input Felder GLKB">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   <title>Inputfelder</title>
 </head>
@@ -16,24 +17,58 @@
 
       <legend>Kreditnehmer(in) 1: Elena Erstkauf</legend>
 
-      <div class="input-container" id="input-name">
-        <label for="name">Vorname</label>
-        <input type="text" name="name" id="name" placeholder=" ">
-      </div>
+      <div class="input-grid-container">
 
-      <div class="input-container" id="input-surname">
-        <label for="surname">Nachname</label>
-        <input type="text" name="surname" id="surname">
-      </div>
+        <div class="input-container" id="input-name">
+          <label for="name">Vorname</label>
+          <input type="text" name="name" id="name" pattern="[A-Za-z]+" required>
+          <span class="material-icons icon-done">done</span>
+          <span class="notification">Bitte ergänzen</span> <!-- Könnte in wicket mit spezifischen Meldungen befüllt werden. Kein JS nötig -->
+          <span class="material-icons icon-arrow-forward">arrow_forward</span>
+        </div>
 
-      <div class="input-container" id="input-birthdate">
-        <label for="birthdate">Geburtsdatum</label>
-        <input type="text" name="birthdate" id="birthdate">
-      </div>
+        <div class="input-container" id="input-surname">
+          <label for="surname">Nachname</label>
+          <input type="text" name="surname" id="surname" pattern="[A-Za-z]+" required>
+          <span class="material-icons icon-done">done</span>
+          <span class="notification">Bitte ergänzen</span>
+          <span class="material-icons icon-arrow-forward">arrow_forward</span>
+        </div>
 
-      <div class="input-container" id="input-nationality">
-        <label for="nationality">Nationalität</label>
-        <input type="text" name="nationality" id="nationality">
+        <div class="input-container" id="input-birthdate">
+          <label for="birthdate">Geburtsdatum</label>
+          <input type="date" name="birthdate" id="birthdate" required>
+          <span class="material-icons icon-done">done</span>
+          <span class="notification">Bitte ergänzen</span>
+          <span class="material-icons icon-arrow-forward">arrow_forward</span>
+        </div>
+
+        <div class="input-container" id="input-nationality">
+          <label for="nationality">Nationalität</label>
+          <input type="text" name="nationality" id="nationality" pattern="[A-Za-z]+" required>
+          <span class="material-icons icon-done">done</span>
+          <span class="notification">Bitte ergänzen</span>
+          <span class="material-icons icon-arrow-forward">arrow_forward</span>
+        </div>
+
+        <div class="input-container" id="input-residence-permits">
+          <!-- Creating a custom dropdown, since <option> element have very limited styling features (Label's association is created by js, therefor the "for" attribute for furhter custom selections should always be "custom-select" in order to make the dropdown menu functionality work for all further custom selects) -->
+          <label for="custom-select">Aufenthaltsbewilligung</label>
+          <div class="custom-select" id="residence-permits" data-is-expanded="false" data-is-valid="">
+            <span class="selected-value"></span>
+            <div class="option-list">
+              <div class="option" hidden disabled selected></div>
+              <div class="option" value="A">Ausweis A</div>
+              <div class="option" value="B">Ausweis B</div>
+              <div class="option" value="C">Ausweis C</div>
+            </div>
+            <span class="material-icons icon-expand-more">expand_more</span>
+          </div>
+          <span class="material-icons icon-done">done</span>
+          <span class="notification">Bitte ergänzen</span>
+          <span class="material-icons icon-arrow-forward">arrow_forward</span>
+        </div>
+
       </div>
 
     </fieldset>
