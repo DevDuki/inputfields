@@ -1,0 +1,151 @@
+
+/* Icons & Notification */
+
+.icon-done,
+.icon-arrow-forward {
+  visibility: hidden;
+}
+
+
+/* Icon Done & Expand More */
+.icon-done,
+.icon-expand-more {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  margin-bottom: 8px;
+
+  font-size: 1.25rem;
+}
+
+.icon-expand-more {
+  cursor: pointer;
+}
+
+
+/* Icon Arrow Forward & notification */
+.icon-arrow-forward {
+  position: absolute;
+  top: 40%;
+  right: calc(100% + 5px);
+
+  color: var(--color-action);
+
+  font-size: 1.75rem;
+}
+
+.input-container .notification {
+  visibility: hidden;
+
+  position: absolute;
+  top: calc(100% + 5px);
+
+  color: var(--color-action);
+
+  font-size: var(--font-size-medium);
+}
+
+
+/* Icon Expand More */
+.icon-expand-more {
+  margin-bottom: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.custom-select[data-has-value="true"]:not(.invalid-input) input ~ .icon-expand-more {
+  visibility: hidden;
+}
+
+.custom-select:focus .icon-expand-more {
+  margin-bottom: 3px;
+}
+
+.option-list.visible ~ .icon-expand-more {
+  transform: rotateX(180deg);
+}
+
+
+/* Icon Info & Tooltip */
+.info-container {
+  position: relative;
+  display: inline;
+}
+
+.icon-info {
+  position: absolute;
+
+  padding-right: 5px;
+
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 1.5rem;
+}
+
+.tooltip {
+  visibility: hidden;
+
+  position: absolute;
+  left: 45px;
+  bottom: 5px;
+
+  width: 150px;
+  padding: 5px;
+  border-radius: 5px;
+
+  background-color: var(--color-hover-option);
+
+  font-weight: var(--font-weight-normal);
+}
+
+.info-container:hover .tooltip,
+.tooltip:hover {
+  visibility: visible;
+}
+
+
+/* Icon Add */
+.icon-add {
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+
+/* Conditional Icon rendering and coloring */
+input:not(:focus):valid ~ .icon-done,
+.custom-select[data-has-value="true"]:not(.invalid-input) ~ .icon-done {
+  visibility: visible;
+}
+
+input.missing-input ~ .icon-arrow-forward,
+input.missing-input ~ .notification,
+input.invalid-input ~ .icon-arrow-forward,
+input.invalid-input ~ .notification,
+.custom-select.missing-input ~ .icon-arrow-forward,
+.custom-select.missing-input ~ .notification,
+.custom-select.invalid-input ~ .icon-arrow-forward,
+.custom-select.invalid-input ~ .notification {
+  visibility: visible;
+}
+
+input.invalid-input ~ .icon-arrow-forward,
+input.invalid-input ~ .notification,
+.custom-select.invalid-input ~ .icon-arrow-forward,
+.custom-select.invalid-input ~ .notification {
+  color: var(--color-warning);
+}
+
+input[type="date"].invalid-input ~ .icon-done,
+.custom-select.invalid-input ~ .icon-done {
+  visibility: hidden;
+}
+
+.custom-select[data-has-value="false"] ~ .icon-arrow-forward,
+.custom-select[data-has-value="false"] ~ .notification {
+  visibility: visible;
+}
+
+.custom-select[data-is-expanded="true"] ~ .notification { /* Without this the notification will overlap the expanded option list */
+  visibility: hidden;
+}

@@ -1,0 +1,14 @@
+
+:root {
+
+  /* Font Family */
+  --font-Futura: 'Futura Book', 'Helvetica Neue';
+
+  /* Font Sizes */
+  --font-size-normal: 0.8125rem;
+  --font-size-medium: 0.875rem;
+
+  /* Font Weights */
+  --font-weight-bold: bold;
+  --font-weight-normal: 400;
+}

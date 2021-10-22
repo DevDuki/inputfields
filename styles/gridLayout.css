@@ -1,0 +1,69 @@
+
+:root {
+
+  /* Grid measurements */
+  --column-gap: 6.25rem;
+  --content-width: 270px;
+
+}
+
+.input-grid-container {
+  display: grid;
+
+  grid-template-columns: repeat(3, var(--content-width));
+  column-gap: min(var(--column-gap));
+
+  padding-left: 2rem;
+}
+
+#input-name {
+  grid-column: 1;
+  grid-row: 1;
+}
+#input-surname {
+  grid-column: 2;
+  grid-row: 1;
+}
+#input-birthdate {
+  grid-column: 1;
+  grid-row: 2;
+}
+#input-nationality {
+  grid-column: 1;
+  grid-row: 3;
+}
+#input-residence-permits {
+  grid-column: 2;
+  grid-row: 3;
+}
+#input-occupation {
+  grid-column: 1;
+  grid-row: 4;
+}
+#input-occupational-status {
+  grid-column: 2;
+  grid-row: 4;
+}
+#input-marital-status {
+  grid-column: 1;
+  grid-row: 5;
+}
+#input-property-status {
+  grid-column: 2;
+  grid-row: 5;
+}
+#input-add-borrower {
+  grid-column: 3;
+  grid-row: 5;
+
+  align-self: end;
+}
+
+@media only screen and (max-width: 1300px) {
+  #input-add-borrower {
+    grid-column: 1;
+    grid-row: 6;
+
+    align-self: end;
+  }
+}

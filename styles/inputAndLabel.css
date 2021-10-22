@@ -1,0 +1,85 @@
+
+/* Label */
+label {
+  cursor: pointer;
+
+  margin-bottom: 5px;
+
+  font-weight: var(--font-weight-bold);
+}
+
+
+/* Input General */
+input {
+  outline: none;
+  border: none;
+
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 2px;
+  height: 2rem;
+
+  font-size: var(--font-size-medium);
+  font-weight: var(--font-weight-normal);
+}
+
+input:focus {
+  border-bottom: 3px solid var(--color-action);
+  padding-bottom: 0px;
+}
+
+
+/* Input type date */
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  font-family: var(--font-Futura);
+
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+
+/* Add Borrower Input (Button) */
+#input-add-borrower {
+  display: none;
+}
+
+fieldset:last-child #input-add-borrower {
+  display: flex;
+}
+
+button#add-borrower {
+  background-color: var(--color-active);
+  color: var(--color-background);
+
+  width: var(--content-width);
+  height: 2.9rem;
+
+  padding-right: 0.625rem;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  font-size: var(--font-size-medium);
+
+  border: none;
+
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+button#add-borrower:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 2.95px 2.95px 2.6px;
+}
+
+button#add-borrower:active {
+  box-shadow: none;
+}
+
+
+/* Residence Permits Input */
+#input-residence-permits {
+  /* Toggling this display rule is done via JS when chosen Nationality is not Switzerland */
+  display: none;
+}
